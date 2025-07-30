@@ -27,6 +27,7 @@ Download the pre-trained model weights from the [Mendeley Dataset](doi to be pub
 - `BB_weights.pth` - Biceps Brachii specific model
 - `VL_weights.pth` - Vastus Lateralis specific model
 - Additional muscle-specific models (D, FCR, FCU, RF, GCMM, TA)
+- Muscle names: BB - biceps brachii, D - deltoid, FCR - flexor carpi radialis, FCU - flexor carpi ulnaris, RF - rectus femoris, GCMM - gastrocnemius medial head, TA - tibialis anterior, VL - vastus lateralis
 
 ### 3. Quick Usage
 
@@ -137,13 +138,12 @@ finetuned_models/
 ## 🎯 Use Cases
 
 ### Medical Applications
-- **Clinical Assessment**: Objective muscle ultrasound analysis
-- **Research**: Quantitative muscle pathology studies
-- **Training**: Educational tool for consistent analysis
+- **Clinical Assessment**: Muscle identification and segmentation
+- **Research**: Developing more generalizable muscle segmentation models for future clinical use
 
 ### Technical Applications
 - **Domain Adaptation**: Fine-tune for different ultrasound machines
-- **Custom Datasets**: Adapt models to specific imaging protocols
+- **Custom Datasets**: Adapt models to specific pathologies
 - **Batch Analysis**: Process large collections of ultrasound images
 
 ## 🛠️ Parameters Reference
@@ -194,6 +194,7 @@ url = {https://www.sciencedirect.com/science/article/pii/S1388245725000367},
 author = {Francesco Marzola and Nens {van Alfen} and Jonne Doorduin and Kristen Mariko Meiburger}
 }
 ```
+Cite a paper by Błaż et al. (in review)
 
 ## ⚠️ System Requirements
 
