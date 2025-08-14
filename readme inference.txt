@@ -162,8 +162,21 @@ url = {https://www.sciencedirect.com/science/article/pii/S1388245725000367},
 author = {Francesco Marzola and Nens {van Alfen} and Jonne Doorduin and Kristen Mariko Meiburger},
 keywords = {Muscle ultrasound, Machine learning, Muscle segmentation, Heckmatt grading, Neuromuscular disease diagnosis}}
 ```
-
+```bibtex
+@article{BLAZ2025,
+title = {Evaluating machine learning muscle ultrasound models on external data – is this the way to propagate forward?},
+journal = {Clinical Neurophysiology},
+year = {2025},
+pages = {2110968},
+issn = {1388-2457},
+doi = {https://doi.org/10.1016/j.clinph.2025.2110968},
+url = {https://www.sciencedirect.com/science/article/pii/S138824572500820X},
+author = {Michał Błaż and Monika Ostrowska and Agnieszka Kułaga and Ewa Maludzińska and Michał Michalski},
+keywords = {Muscle ultrasound; Neuromuscular disorders; Image segmentation; Machine learning}
+}
+```
 ## License
 
 Please refer to the original paper and repository for license information.
+
 
