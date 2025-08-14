@@ -1,6 +1,6 @@
 # Fine-Tuned Muscle Segmentation Models
 
-Easy-to-use scripts for fine-tuning and running inference on muscle ultrasound segmentation models, based on the research from Marzola et al. 2025 - "Machine learning-driven Heckmatt grading in facioscapulohumeral muscular dystrophy.", adapted by Michał Błaż (article in review)
+Easy-to-use scripts for fine-tuning and running inference on muscle ultrasound segmentation models, based on the research from Marzola et al. 2025 - "Machine learning-driven Heckmatt grading in facioscapulohumeral muscular dystrophy.", adapted by Błaż et al. (2025) - "Evaluating machine learning muscle ultrasound models on external data – is this the way to propagate forward?"
 
 ## 🚀 Quick Start
 
@@ -20,13 +20,30 @@ mim install "mmsegmentation>=1.0.0"
 pip install opencv-python matplotlib numpy scikit-learn
 ```
 
+If there is trouble with versions of the packages, I recommend these exact versions:
+
+```bash
+conda create --name mmseg_finetune python=3.9 -y
+conda activate mmseg_finetune
+
+pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cpu
+
+pip install -U openmim
+mim install mmengine
+mim install "mmcv>=2.0.0,<2.2.0"
+pip install "mmsegmentation>=1.0.0"
+pip install mmpretrain
+
+pip install ftfy xgboost shap pandas seaborn scikit-learn opencv-python Pillow openpyxl xlrd tqdm matplotlib numpy
+```
+
 ### 2. Download Model Weights
 
-Download the pre-trained model weights from the [Mendeley Dataset](doi to be published):
+Download the pre-trained model weights from the [Mendeley Dataset](Błaż, Michał (2025), “Evaluating machine learning muscle ultrasound models on external data”, Mendeley Data, V2, doi: 10.17632/7bcsvh6nfv.2):
 - `Multi_weights.pth` - Multi-class model (17 muscle classes)
 - `BB_weights.pth` - Biceps Brachii specific model
 - `VL_weights.pth` - Vastus Lateralis specific model
-- Additional muscle-specific models (D, FCR, FCU, RF, GCMM, TA)
+- ... etc. - other muscle-specific models (D, FCR, FCU, RF, GCMM, TA)
 - Muscle names: BB - biceps brachii, D - deltoid, FCR - flexor carpi radialis, FCU - flexor carpi ulnaris, RF - rectus femoris, GCMM - gastrocnemius medial head, TA - tibialis anterior, VL - vastus lateralis
 
 ### 3. Quick Usage
@@ -97,7 +114,7 @@ python fine-tuning.py --model Multi --pretrained Multi_weights.pth --data your_d
 ## 🔍 Inference Features
 
 ### Multi-Model Support
-- **Multi Model**: 17 classes including Biceps brachii, Rectus femoris, Tibialis anterior, etc.
+- **Multi Model**: 17 classes including Biceps brachii, Rectus femoris, Tibialis anterior, etc. (note - this model works best on muscles present in the dataset used to fine-tune the original model ie. BB, D, VL, RF, TA, GCMM). If your dataset contains 16 muscles present in the original dataset, I recomennd reproducing and using the original model).
 - **Binary/Muscle-specific**: Target muscle vs background classification
 
 ### Processing Options
@@ -137,14 +154,7 @@ finetuned_models/
 
 ## 🎯 Use Cases
 
-### Medical Applications
-- **Clinical Assessment**: Muscle identification and segmentation
-- **Research**: Developing more generalizable muscle segmentation models for future clinical use
-
-### Technical Applications
-- **Domain Adaptation**: Fine-tune for different ultrasound machines
-- **Custom Datasets**: Adapt models to specific pathologies
-- **Batch Analysis**: Process large collections of ultrasound images
+### Research Use Only
 
 ## 🛠️ Parameters Reference
 
@@ -176,7 +186,8 @@ For comprehensive guides, troubleshooting, and advanced usage:
 ## 🔗 Related Resources
 
 - **Original Paper**: [Marzola et al. 2025 - Clinical Neurophysiology](https://doi.org/10.1016/j.clinph.2025.01.016)
-- **Model Weights & Configs**: [Mendeley Dataset](doi to be published)
+- **Letter to the Editor** that describes the idea behind the adaptations of the original work, by the Author of this repository: [Błaż et al. 2025 - Clinical Neurophysiology](https://doi.org/10.1016/j.clinph.2025.2110968)
+- **Model Weights & Configs**: [Mendeley Dataset](https://doi.org/10.17632/7bcsvh6nfv.2)
 - **MMSegmentation Framework**: [GitHub Repository](https://github.com/open-mmlab/mmsegmentation)
 
 ## 📄 Citation
@@ -194,8 +205,19 @@ url = {https://www.sciencedirect.com/science/article/pii/S1388245725000367},
 author = {Francesco Marzola and Nens {van Alfen} and Jonne Doorduin and Kristen Mariko Meiburger}
 }
 ```
-Cite a paper by Błaż et al. (in review)
-
+```bibtex
+@article{BLAZ2025,
+title = {Evaluating machine learning muscle ultrasound models on external data – is this the way to propagate forward?},
+journal = {Clinical Neurophysiology},
+year = {2025},
+pages = {2110968},
+issn = {1388-2457},
+doi = {https://doi.org/10.1016/j.clinph.2025.2110968},
+url = {https://www.sciencedirect.com/science/article/pii/S138824572500820X},
+author = {Michał Błaż and Monika Ostrowska and Agnieszka Kułaga and Ewa Maludzińska and Michał Michalski},
+keywords = {Muscle ultrasound; Neuromuscular disorders; Image segmentation; Machine learning}
+}
+```
 ## ⚠️ System Requirements
 
 - **Python**: ≥ 3.8
